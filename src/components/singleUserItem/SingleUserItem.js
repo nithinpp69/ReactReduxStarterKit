@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, FlatList, Image } from 'react-native';
-import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../helpers/Responsive';
+import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../helpers/responsive';
 import styles from './singleUserItemStyles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';

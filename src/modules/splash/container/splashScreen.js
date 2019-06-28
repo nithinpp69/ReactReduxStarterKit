@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ActionCreators } from "../../../actions/index";
-// import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen'
 
 class splashScreenUI extends Component {
   constructor(props) {
@@ -23,7 +23,8 @@ class splashScreenUI extends Component {
   }
 
   componentWillUnmount() {
-    // SplashScreen.hide();
+    if (Platform.OS == 'ios')
+      SplashScreen.hide();
   }
 
   render() {

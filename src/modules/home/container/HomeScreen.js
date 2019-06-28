@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ActionCreators } from "../../../actions/index";
 import styles from '../style/homeStyle';
-import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../../helpers/Responsive';
+import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../../helpers/responsive';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SingleUserItem from '../../../components/singleUserItem/SingleUserItem';

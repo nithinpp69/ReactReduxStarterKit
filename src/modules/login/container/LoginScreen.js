@@ -8,11 +8,14 @@ import styles from '../style/loginStyle';
 import { Header } from 'react-navigation';
 import TextField from '../../../components/textField/TextField';
 import { Colors } from '../../../helpers/colors';
+import {emailvalidation} from '../../../helpers/validation';
+
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
+      password: '',
       errors: {}
     };
   }
@@ -27,6 +30,7 @@ class LoginScreen extends Component {
     var alphaNumeric = /^[a-zA-Z0-9]*$/;
     this.setState({
       email: this.state.email.trim().replace(/\s\s+/g, ' '),
+      password: this.state.password.trim().replace(/\s\s+/g, ' '),
     }, () => {
     })
     let errors = {};
@@ -35,11 +39,15 @@ class LoginScreen extends Component {
       valid = false;
       errors.email = 'Email is required'
     }
+    if (this.state.password == "") {
+      valid = false;
+      errors.password = 'Password is required'
+    }
     if (this.state.email != "") {
-      // if (!emailvalidation(this.state.email)) {
-      //   valid = false;
-      //   errors.email = 'Enter a valid email'
-      // }
+      if (!emailvalidation(this.state.email)) {
+        valid = false;
+        errors.email = 'Enter a valid email'
+      }
     }
     this.setState({
       errors: errors
@@ -73,9 +81,22 @@ class LoginScreen extends Component {
               }}
               keyboardType={'email-address'}
               onSubmitEditing={() => {
+                this.password.focus()
               }}
               maxLength={25}
               error={this.state.errors['email']}
+            />
+            <TextField
+              placeholder={'Your password *'}
+              onChangeText={(password) => this.setState({ password })}
+              reference={(input) => {
+                this.password = input;
+              }}
+              onSubmitEditing={() => {
+              }}
+              secureTextEntry={true}
+              maxLength={25}
+              error={this.state.errors['password']}
             />
             <TouchableOpacity onPress={() => { this.handleLogin() }} style={styles.loginButton}>
               <Text style={styles.loginButtonText}>{Strings.LoginScreen.loginButtonText}</Text>

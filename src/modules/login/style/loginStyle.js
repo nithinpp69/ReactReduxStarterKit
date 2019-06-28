@@ -1,7 +1,7 @@
 import {
   StyleSheet,
 } from 'react-native';
-import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../../helpers/Responsive';
+import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../../helpers/responsive';
 import { Colors } from '../../../helpers/colors';
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    borderRadius: responsiveWidth(5)
+    borderRadius: responsiveWidth(5),
+    marginTop: responsiveWidth(5),
   },
   loginButtonText: {
     color: 'white',

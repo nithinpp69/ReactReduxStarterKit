@@ -1,7 +1,7 @@
 import {
   StyleSheet,
 } from 'react-native';
-import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../helpers/Responsive';
+import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../helpers/responsive';
 import { Colors } from '../../helpers/colors';
 const styles = StyleSheet.create({
   user: {

@@ -1,7 +1,7 @@
 import {
   StyleSheet,
 } from 'react-native';
-import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../../helpers/Responsive';
+import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../../helpers/responsive';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
