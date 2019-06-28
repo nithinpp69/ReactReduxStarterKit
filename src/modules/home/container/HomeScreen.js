@@ -55,6 +55,7 @@ class HomeScreen extends Component {
     })
     this.props.actions.getPeopleList().then(() => {
       this.setState({
+        peopleList: this.props.home.homeResult.results,
         refreshing: false
       })
     });
