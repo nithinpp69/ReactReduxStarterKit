@@ -17,7 +17,7 @@ import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../../
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SingleUserItem from '../../../components/singleUserItem/SingleUserItem';
-
+import { Colors } from '../../../helpers/colors';
 
 class HomeScreen extends Component {
   constructor(props) {
@@ -66,11 +66,11 @@ class HomeScreen extends Component {
       return (
         <SafeAreaView style={styles.container}>
           <StatusBar
-            barStyle='dark-content'
-            backgroundColor='#fff'
+            barStyle='light-content'
+            backgroundColor={Colors.THEME_COLOR}
           />
           <View style={[styles.contentContainer, { justifyContent: 'center', alignItems: 'center' }]}>
-            <ActivityIndicator color={'#3d3e3e'} size='large' />
+            <ActivityIndicator color={Colors.THEME_COLOR} size='large' />
           </View>
         </SafeAreaView>
       )
@@ -78,8 +78,8 @@ class HomeScreen extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar
-          barStyle='dark-content'
-          backgroundColor='#fff'
+          barStyle='light-content'
+          backgroundColor={Colors.THEME_COLOR}
         />
         <View style={styles.contentContainer}>
           <FlatList

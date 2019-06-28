@@ -2,6 +2,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../helpers/Responsive';
+import { Colors } from '../../helpers/colors';
 const styles = StyleSheet.create({
   user: {
     paddingHorizontal: responsiveWidth(5),
@@ -18,12 +19,12 @@ const styles = StyleSheet.create({
     borderRadius: responsiveWidth(8),
   },
   name: {
-    color: '#000000',
+    color: Colors.BLACK,
     fontSize: responsiveFontSize(2.0),
     paddingLeft: responsiveWidth(4),
   },
   email: {
-    color: '#3d3e3e',
+    color: Colors.THEME_COLOR,
     fontSize: responsiveFontSize(1.8),
     paddingLeft: responsiveWidth(4),
   },

@@ -2,6 +2,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../../helpers/Responsive';
+import { Colors } from '../../../helpers/colors';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: responsiveWidth(5),
   },
   loginButton: {
-    backgroundColor: '#3d3e3e',
+    backgroundColor: Colors.THEME_COLOR,
     width: responsiveWidth(50),
     height: responsiveWidth(10),
     justifyContent: 'center',

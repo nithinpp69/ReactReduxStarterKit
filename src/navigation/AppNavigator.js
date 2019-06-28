@@ -3,7 +3,7 @@ import { Animated, Easing } from 'react-native';
 import SplashScreenUI from '../modules/splash/container/splashScreen';
 import Login from '../modules/login/container/LoginScreen';
 import HomeScreen from '../modules/home/container/HomeScreen';
-
+import { Colors } from '../helpers/colors';
 
 const AuthStack = createStackNavigator({
   Login: { screen: Login }
@@ -12,16 +12,17 @@ const AuthStack = createStackNavigator({
     mode: 'modal',
     defaultNavigationOptions: {
       headerStyle: {
-        elevation: 0,
-        shadowOpacity: 0,
+        elevation: 4,
+        shadowOpacity: 0.6,
         shadowOffset: {
-          height: 0,
+          height: 0.2,
         },
-        shadowRadius: 0,
-        backgroundColor: 'white',
+        shadowRadius: 2,
+        backgroundColor: Colors.THEME_COLOR,
       },
       headerTitleStyle: {
-        fontWeight: '400'
+        fontWeight: '400',
+        color: Colors.WHITE
       },
       gesturesEnabled: false,
     },
@@ -58,15 +59,16 @@ const Appstack = createStackNavigator({
     defaultNavigationOptions: {
       headerStyle: {
         elevation: 4,
-        shadowOpacity: 0,
+        shadowOpacity: 0.6,
         shadowOffset: {
-          height: 0,
+          height: 0.2,
         },
-        shadowRadius: 0,
-        backgroundColor: 'white',
+        shadowRadius: 2,
+        backgroundColor: Colors.THEME_COLOR,
       },
       headerTitleStyle: {
-        fontWeight: '400'
+        fontWeight: '400',
+        color: Colors.WHITE
       },
       gesturesEnabled: false,
     },

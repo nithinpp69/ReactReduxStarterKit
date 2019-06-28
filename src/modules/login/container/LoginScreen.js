@@ -7,6 +7,7 @@ import { Strings } from '../../../helpers/strings';
 import styles from '../style/loginStyle';
 import { Header } from 'react-navigation';
 import TextField from '../../../components/textField/TextField';
+import { Colors } from '../../../helpers/colors';
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
@@ -56,7 +57,7 @@ class LoginScreen extends Component {
       <SafeAreaView style={styles.container}>
         <StatusBar
           barStyle='dark-content'
-          backgroundColor='#fff'
+          backgroundColor={Colors.WHITE}
         />
         <View style={styles.contentContainer}>
           <ScrollView
