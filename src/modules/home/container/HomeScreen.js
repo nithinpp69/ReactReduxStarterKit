@@ -24,7 +24,8 @@ class HomeScreen extends Component {
     super(props);
     this.state = {
       isLoading: true,
-      refreshing: false
+      refreshing: false,
+      peopleList : this.props.home.homeResult.results || []
     };
   }
 
@@ -38,6 +39,7 @@ class HomeScreen extends Component {
     this.props.actions.getPeopleList().then(() => {
       console.log("HOME RESULT ", this.props.home.homeResult);
       this.setState({
+        peopleList: this.props.home.homeResult.results,
         isLoading: false
       })
     })
@@ -59,7 +61,7 @@ class HomeScreen extends Component {
   }
 
   render() {
-    let { isLoading } = this.state;
+    let { isLoading, peopleList } = this.state;
 
     if (isLoading) {
       return (
@@ -83,7 +85,7 @@ class HomeScreen extends Component {
         <View style={styles.contentContainer}>
           <FlatList
             ref={(ref) => { this.flatListRef = ref; }}
-            data={this.props.home.homeResult.results}
+            data={peopleList}
             removeClippedSubviews={true}
             refreshing={this.state.refreshing}
             onRefresh={() => this._onRefresh()}

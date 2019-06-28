@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View, Text, StatusBar, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { SafeAreaView, FlatList, View, Text, StatusBar, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { ActionCreators } from "../../../actions/index";
@@ -49,43 +49,39 @@ class LoginScreen extends Component {
   handleLogin() {
     if (this.isValid())
       this.props.navigation.navigate('Application')
-    // else
-
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <StatusBar
           barStyle='dark-content'
           backgroundColor='#fff'
         />
         <View style={styles.contentContainer}>
-          {/* <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : null}> */}
-            <ScrollView
-              showsVerticalScrollIndicator={false}
-              bounces={true}
-              removeClippedSubviews={false}
-            >
-              <TextField
-                placeholder={'Your email address *'}
-                onChangeText={(email) => this.setState({ email })}
-                reference={(input) => {
-                  this.email = input;
-                }}
-                keyboardType={'email-address'}
-                onSubmitEditing={() => {
-                }}
-                maxLength={25}
-                error={this.state.errors['email']}
-              />
-              <TouchableOpacity onPress={() => { this.handleLogin() }} style={styles.loginButton}>
-                <Text style={styles.loginButtonText}>{Strings.LoginScreen.loginButtonText}</Text>
-              </TouchableOpacity>
-            </ScrollView>
-          {/* </KeyboardAvoidingView> */}
+          <ScrollView
+            showsVerticalScrollIndicator={false}
+            bounces={true}
+            removeClippedSubviews={false}
+          >
+            <TextField
+              placeholder={'Your email address *'}
+              onChangeText={(email) => this.setState({ email })}
+              reference={(input) => {
+                this.email = input;
+              }}
+              keyboardType={'email-address'}
+              onSubmitEditing={() => {
+              }}
+              maxLength={25}
+              error={this.state.errors['email']}
+            />
+            <TouchableOpacity onPress={() => { this.handleLogin() }} style={styles.loginButton}>
+              <Text style={styles.loginButtonText}>{Strings.LoginScreen.loginButtonText}</Text>
+            </TouchableOpacity>
+          </ScrollView>
         </View>
-      </View>
+      </SafeAreaView>
     );
   }
 }

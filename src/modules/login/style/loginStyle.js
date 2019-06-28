@@ -26,8 +26,6 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
     width: responsiveWidth(100),
     height: responsiveHeight(100),
     paddingHorizontal: responsiveWidth(5),
@@ -38,6 +36,7 @@ const styles = StyleSheet.create({
     height: responsiveWidth(10),
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
     borderRadius: responsiveWidth(5)
   },
   loginButtonText: {
