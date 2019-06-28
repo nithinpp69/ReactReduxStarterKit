@@ -4,9 +4,9 @@ import {
 import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../helpers/Responsive';
 const styles = StyleSheet.create({
   user: {
+    paddingHorizontal: responsiveWidth(5),
+    width: responsiveWidth(100),
     flexDirection: 'row',
-    // width: responsiveWidth(100),
-    marginLeft: responsiveWidth(5),
     alignItems: 'center'
   },
   userProfile: {
@@ -18,13 +18,13 @@ const styles = StyleSheet.create({
     borderRadius: responsiveWidth(8),
   },
   name: {
-    fontSize: responsiveFontSize(2.0),
     color: '#000000',
+    fontSize: responsiveFontSize(2.0),
     paddingLeft: responsiveWidth(4),
   },
   email: {
-    fontSize: responsiveFontSize(1.8),
     color: '#3d3e3e',
+    fontSize: responsiveFontSize(1.8),
     paddingLeft: responsiveWidth(4),
   },
 })

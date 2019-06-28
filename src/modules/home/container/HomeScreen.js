@@ -25,7 +25,7 @@ class HomeScreen extends Component {
     this.state = {
       isLoading: true,
       refreshing: false,
-      peopleList : this.props.home.homeResult.results || []
+      peopleList: this.props.home.homeResult.results || []
     };
   }
 
@@ -37,7 +37,6 @@ class HomeScreen extends Component {
 
   componentDidMount() {
     this.props.actions.getPeopleList().then(() => {
-      console.log("HOME RESULT ", this.props.home.homeResult);
       this.setState({
         peopleList: this.props.home.homeResult.results,
         isLoading: false
@@ -63,7 +62,6 @@ class HomeScreen extends Component {
 
   render() {
     let { isLoading, peopleList } = this.state;
-
     if (isLoading) {
       return (
         <SafeAreaView style={styles.container}>

@@ -28,19 +28,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    width: responsiveWidth(100),
-    height: responsiveHeight(100),
-    // paddingHorizontal: responsiveWidth(5),
   },
   userResults: {
-    // paddingTop: responsiveWidth(5),
-    width: responsiveWidth(100),
-    height: responsiveHeight(100),
+    paddingVertical: responsiveWidth(5)
   },
   ItemSeparator: {
-    width: responsiveWidth(100) - responsiveWidth(10),
-    borderWidth: 0.2,
-    borderColor: '#3d3e3e',
     margin: responsiveWidth(5)
   }
 })
