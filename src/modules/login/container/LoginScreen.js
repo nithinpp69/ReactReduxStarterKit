@@ -24,14 +24,14 @@ class LoginScreen extends Component {
     };
   }
 
-  // static navigationOptions = {
-  //   header: null,
-  // }
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: 'Login',
-    };
-  };
+  static navigationOptions = {
+    header: null,
+  }
+  // static navigationOptions = ({ navigation }) => {
+  //   return {
+  //     title: 'Login',
+  //   };
+  // };
 
   isValid = () => {
     var letters = /^([a-zA-Z]+\s)*[a-zA-Z]+$/;
@@ -77,8 +77,8 @@ class LoginScreen extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar
-          barStyle='light-content'
-          backgroundColor={Colors.THEME_COLOR}
+          barStyle='dark-content'
+          backgroundColor='transparent'
         />
         <View style={styles.contentContainer}>
           <ScrollView

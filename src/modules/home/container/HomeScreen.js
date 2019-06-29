@@ -93,7 +93,7 @@ class HomeScreen extends Component {
             renderItem={({ item, index }) => {
               return (
                 <SingleUserItem
-                  onPress={() => {this.props.navigation.navigate('DetailsScreen') }}
+                  onPress={() => {this.props.navigation.navigate('DetailsScreen',{user: item}) }}
                   itemIndex={index}
                   imageURL={item.picture.medium}
                   firstName={item.name.first}

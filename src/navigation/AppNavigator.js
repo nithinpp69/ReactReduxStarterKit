@@ -1,5 +1,7 @@
+import React, { Component } from 'react';
 import { createAppContainer, createStackNavigator, createSwitchNavigator } from "react-navigation";
 import { Animated, Easing } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import SplashScreenUI from '../modules/splash/container/splashScreen';
 import Login from '../modules/login/container/LoginScreen';
 import HomeScreen from '../modules/home/container/HomeScreen';
@@ -23,6 +25,9 @@ const defaultNavigationOptions = {
   // headerRightContainerStyle: {
   //   paddingRight: responsiveWidth(5)
   // },
+  headerBackImage: (
+    <Ionicons name='ios-arrow-back' size={responsiveWidth(6)} color={Colors.WHITE} style={{ padding: responsiveWidth(2.5) }} />
+  ),
   headerTitleStyle: {
     flex: 1,
     alignSelf: 'center',
