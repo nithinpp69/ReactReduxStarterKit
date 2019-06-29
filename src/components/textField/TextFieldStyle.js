@@ -5,7 +5,7 @@ import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../hel
 import { Colors } from '../../helpers/colors';
 const styles = StyleSheet.create({
   textFieldContainer:{
-    backgroundColor: Colors.LIGHTER_GREY,
+    backgroundColor: Colors.GREY_20,
     borderRadius: responsiveWidth(2),
     flexDirection: 'row',
     alignItems: 'center',
@@ -15,9 +15,9 @@ const styles = StyleSheet.create({
   textField:{
     flex: 1,
     paddingHorizontal: responsiveWidth(2),
-    color: 'rgba(0,0,0,0.80)',
+    color: Colors.BLACK_80,
     height: responsiveHeight(6),
-    fontSize: responsiveFontSize(1.3),
+    fontSize: responsiveFontSize(1.8),
   },
   errorInfo: {
     paddingHorizontal: responsiveWidth(2),
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     right: 0,
   },
   errorText: {
-    color: Colors.RED,
+    color: Colors.RED_60,
   },
   labelTextStyle: {
     fontWeight: '400',

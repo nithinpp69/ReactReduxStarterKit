@@ -17,6 +17,7 @@ export default class TextField extends React.PureComponent {
   }
   render() {
     const {
+      editable,
       labelText,
       onChangeText,
       keyboardType,
@@ -30,49 +31,64 @@ export default class TextField extends React.PureComponent {
       placeholder,
       secureTextEntry,
       onFocus,
+      onBlur,
       error,
-      width
+      width,
+      numberOfLines,
+      validator,
+      onClear
     } = this.props;
     const {
-      showErrorText
+      inFocus
     } = this.state;
     return (
-      <View>
-        <View style={[styles.textFieldContainer, { borderColor: error ? Colors.RED : Colors.LIGHTER_GREY, borderWidth: (this.state.inFocus) ? 2 : 1, }]}>
+      <View style={{ flex: 1 }}>
+        <View style={[styles.textFieldContainer, {
+          width: width ? width : responsiveWidth(90), borderColor: error && !inFocus ? Colors.RED_60 : Colors.GREY_10, borderWidth: (inFocus) ? 1.1 : 0.8,
+        }]}>
           <TextInput
+            editable={editable == null ? true : editable}
             style={styles.textField}
-            placeholderTextColor={Colors.LIGHT_GREY}
+            placeholderTextColor={error && !inFocus ? Colors.RED_60 : Colors.GREY_50}
             ref={reference}
             label={labelText}
-            value={!showErrorText ? value : ''}
+            value={value}
             secureTextEntry={secureTextEntry}
             onChangeText={onChangeText}
             keyboardType={keyboardType == null ? 'default' : keyboardType}
             autoCapitalize={autoCapitalize == null ? 'none' : autoCapitalize}
             maxLength={maxLength}
             onSubmitEditing={onSubmitEditing}
-            placeholder={!showErrorText ? placeholder : ''}
+            placeholder={placeholder}
             on={() => this.setState({ inFocus: true })}
-            onBlur={() => this.setState({
-              inFocus: false
-            })}
-            numberOfLines={1}
+            onBlur={
+              () =>
+                this.setState({
+                  inFocus: false
+                })
+            }
+            // onBlur={onBlur}
+            numberOfLines={numberOfLines == null ? 1 : numberOfLines}
             onFocus={() => {
               onFocus
               this.setState({ inFocus: true })
             }}>
           </TextInput>
           {
-            error && (
+            error && !inFocus && (
               <View activeOpacity={0.9} style={styles.errorInfo}>
-                <Ionicons name='ios-information-circle-outline' color={Colors.RED} size={responsiveWidth(6)} />
+                <Ionicons name='ios-information-circle-outline' color={Colors.RED_60} size={responsiveWidth(6)} />
               </View>
             )
           }
         </View>
-        <View style={styles.errorWindow}>
-          <Text style={styles.errorText}>{error}</Text>
-        </View>
+        {
+          error && !inFocus && (
+            <View style={styles.errorWindow}>
+              <Text style={styles.errorText}>{error}</Text>
+            </View>
+          )
+        }
       </View>
     );
   }

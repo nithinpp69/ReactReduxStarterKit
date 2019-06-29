@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   toolBar: {
     alignItems: 'center',
@@ -28,9 +28,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
     justifyContent: 'center',
-    // alignItems: 'center',
-    width: responsiveWidth(100),
-    height: responsiveHeight(100),
+    alignItems: 'center',
     paddingHorizontal: responsiveWidth(5),
   },
   loginButton: {
