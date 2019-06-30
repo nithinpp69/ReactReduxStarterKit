@@ -25,6 +25,7 @@ class HomeScreen extends Component {
     this.state = {
       isLoading: true,
       refreshing: false,
+      page: 1,
       peopleList: this.props.home.homeResult.results || []
     };
   }
@@ -32,15 +33,44 @@ class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'React Redux Starter Kit',
+      headerLeft: (
+        <View />
+      ),
+      headerRight: (
+        <TouchableOpacity style={styles.headerRight} onPress={navigation.getParam('logoutUser')}>
+          <Ionicons name='ios-exit' size={responsiveWidth(6)} color={Colors.WHITE} />
+        </TouchableOpacity>
+      )
     };
   };
 
+
+
+  _logoutUser = () => {
+    this.props.actions.logoutUser()
+    this.props.navigation.navigate('Authentication')
+  }
+
   componentDidMount() {
-    this.props.actions.getPeopleList().then(() => {
-      this.setState({
-        peopleList: this.props.home.homeResult.results,
-        isLoading: false
-      })
+    this.props.navigation.setParams({ logoutUser: this._logoutUser });
+    this.getPeople()
+  }
+
+  getPeople() {
+    let { page } = this.state;
+    this.setState({
+      isLoading: true
+    })
+    this.props.actions.getPeopleList(page).then(() => {
+      if (!this.props.home.error)
+        this.setState({
+          peopleList: [...this.state.peopleList, ...this.props.home.homeResult.results],
+          isLoading: false
+        })
+      else
+        this.setState({
+          isLoading: false
+        })
     })
   }
 
@@ -52,7 +82,7 @@ class HomeScreen extends Component {
     this.setState({
       refreshing: true
     })
-    this.props.actions.getPeopleList().then(() => {
+    this.props.actions.getPeopleList(1).then(() => {
       this.setState({
         peopleList: this.props.home.homeResult.results,
         refreshing: false
@@ -61,8 +91,10 @@ class HomeScreen extends Component {
   }
 
   render() {
-    let { isLoading, peopleList } = this.state;
-    if (isLoading) {
+    console.log(this.props.auth)
+    let { isLoading, peopleList, page } = this.state;
+    let { error } = this.props.home;
+    if (isLoading && page == 1 ) {
       return (
         <SafeAreaView style={styles.container}>
           <StatusBar
@@ -93,7 +125,7 @@ class HomeScreen extends Component {
             renderItem={({ item, index }) => {
               return (
                 <SingleUserItem
-                  onPress={() => {this.props.navigation.navigate('DetailsScreen',{user: item}) }}
+                  onPress={() => { this.props.navigation.navigate('DetailsScreen', { user: item }) }}
                   itemIndex={index}
                   imageURL={item.picture.medium}
                   firstName={item.name.first}
@@ -105,57 +137,25 @@ class HomeScreen extends Component {
             ItemSeparatorComponent={() => (
               <View style={styles.ItemSeparator} />
             )}
-            // ListEmptyComponent={() => {
-            //   if (!this.state.isLoading && this.state.searchTerm != '' && this.props.search.articles) {
-            //     return (
-            //       <View style={styles.emptyListContainer}>
-            //         <Text style={styles.emptyListContainerText}>
-            //           There's nothing here...
-            //       </Text>
-            //       </View>
-            //     )
-            //   } else if (searchResult.totalResults == 0) {
-            //     return (
-            //       <View style={styles.emptyListContainer}>
-            //         <Ionicons name='ios-paper' color={'rgba(26, 188, 156,0.7)'} size={responsiveWidth(10)} />
-            //         <Text style={styles.emptyListContainerText}>
-            //           Nothing found...
-            //       </Text>
-            //       </View>
-            //     )
-            //   } else {
-            //     return null
-            //   }
-            // }}
-            // ListFooterComponent={() => {
-            //   if (searchResult.length > 0) {
-            //     if (this.props.search.searchResult.articles.length < this.props.search.searchResult.totalResults) {
-            //       return (
-            //         <View style={{
-            //           justifyContent: 'center',
-            //           alignItems: 'center',
-            //           width: responsiveWidth(100),
-            //           height: responsiveWidth(15)
-            //         }}>
-            //           <Text style={styles.listFooterText}>Hang on...</Text>
-            //           <ActivityIndicator size="large" color='#000' />
-            //         </View>
-            //       )
-            //     } else {
-            //       return null
-            //     }
-            //   } else { return null }
-            // }}
+            ListFooterComponent={() => {
+              return (
+                <View style={styles.listFooter}>
+                  {
+                    isLoading ?
+                      <ActivityIndicator size="large" color={Colors.THEME_COLOR} />
+                      : null
+                  }
+                </View>
+              )
+            }}
             onEndReachedThreshold={0.01}
-          // onEndReached={() => {
-          //   if (this.state.isLoading == false) {
-          //     this.setState({
-          //       currentPage: this.state.currentPage + 1
-          //     })
-          //     if (this.state.posts.length < this.state.totalCount)
-          //       this.getItems()
-          //   }
-          // }}
+            onEndReached={() => {
+              this.setState({
+                page: this.state.page + 1
+              }, () => {
+                this.getPeople(this.state.page)
+              })
+            }}
           />
         </View>
       </SafeAreaView>
@@ -165,7 +165,8 @@ class HomeScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    home: state.home
+    home: state.home,
+    auth: state.auth
   }
 }
 

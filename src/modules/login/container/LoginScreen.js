@@ -15,10 +15,10 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      email: 'nithin@mail.com',
       first_name: '',
       last_name: '',
-      password: '',
+      password: '123456789',
       autovalidate: false,
       errors: {},
     };
@@ -68,8 +68,10 @@ class LoginScreen extends Component {
     this.setState({
       autovalidate: true
     })
-    if (this.isValid())
+    if (this.isValid()) {
+      this.props.actions.saveUserInfo(this.state.email, this.state.password)
       this.props.navigation.navigate('Application')
+    }
   }
 
   render() {
@@ -81,12 +83,13 @@ class LoginScreen extends Component {
           backgroundColor='transparent'
         />
         <View style={styles.contentContainer}>
-          <ScrollView
+          {/* <ScrollView
             showsVerticalScrollIndicator={false}
             bounces={true}
             keyboardShouldPersistTaps='always'
             removeClippedSubviews={false}
-          >
+            style={{flex:1}}
+          > */}
             <TextField
               placeholder={'Your email address *'}
               value={this.state.email}
@@ -124,7 +127,7 @@ class LoginScreen extends Component {
             <TouchableOpacity onPress={() => { this.handleLogin() }} style={styles.loginButton} activeOpacity={0.8}>
               <Text style={styles.loginButtonText}>{Strings.LoginScreen.loginButtonText}</Text>
             </TouchableOpacity>
-          </ScrollView>
+          {/* </ScrollView> */}
         </View>
       </SafeAreaView>
     );
@@ -133,7 +136,7 @@ class LoginScreen extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    home: state.home
+    auth: state.auth
   }
 }
 

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     paddingLeft: responsiveWidth(4),
   },
   email: {
-    color: Colors.THEME_COLOR,
+    color: Colors.DARK_GREY,
     fontSize: responsiveFontSize(1.8),
     paddingLeft: responsiveWidth(4),
   },

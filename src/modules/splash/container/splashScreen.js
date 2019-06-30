@@ -9,32 +9,29 @@ class splashScreenUI extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      auth: this.props.auth.authResult.email || undefined
     };
   }
   componentDidMount() {
-    this.props.navigation.navigate('Authentication');
-    // this.getSavedBookmarks();
-  }
-
-  getSavedBookmarks = async () => {
-    const existingBookmarks = await AsyncStorage.getItem('bookmarks');
-    this.props.actions.getSavedBookmarks(JSON.parse(existingBookmarks));
-    this.props.navigation.navigate('Application');
+    if (this.props.auth.authResult.email == undefined)
+      this.props.navigation.navigate('Authentication');
+    else
+      this.props.navigation.navigate('Application');
   }
 
   componentWillUnmount() {
-    if (Platform.OS == 'ios')
-      SplashScreen.hide();
+    SplashScreen.hide();
   }
 
   render() {
+    console.log(this.props.auth.authResult)
     return null;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    home: state.home
+    auth: state.auth
   }
 }
 

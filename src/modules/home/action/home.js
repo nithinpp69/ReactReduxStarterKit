@@ -1,8 +1,8 @@
 import { getHome } from '../../../services/api';
 
-export function getPeopleList() {
+export function getPeopleList(page) {
   return (dispatch, getState) => {
-    return getHome().then(response => {
+    return getHome(page).then(response => {
       return response.json();
     }).then(responseJson => {
       dispatch(getHomeSuccess(responseJson));
@@ -12,6 +12,7 @@ export function getPeopleList() {
       });
   }
 }
+
 export function getHomeSuccess(responseJson) {
   return ({
     type: 'HOME_RESULT',

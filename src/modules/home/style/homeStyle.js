@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  headerRight: {
+    paddingRight: responsiveWidth(5)
+  },
   toolBar: {
     alignItems: 'center',
     width: responsiveWidth(100),
@@ -28,6 +31,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  listFooter: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: responsiveWidth(100),
+    height: responsiveWidth(10)
   },
   userResults: {
     paddingVertical: responsiveWidth(5)

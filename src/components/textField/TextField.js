@@ -42,7 +42,7 @@ export default class TextField extends React.PureComponent {
       inFocus
     } = this.state;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{  }}>
         <View style={[styles.textFieldContainer, {
           width: width ? width : responsiveWidth(90), borderColor: error && !inFocus ? Colors.RED_60 : Colors.GREY_10, borderWidth: (inFocus) ? 1.1 : 0.8,
         }]}>
