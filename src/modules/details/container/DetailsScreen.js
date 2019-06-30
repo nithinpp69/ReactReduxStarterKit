@@ -18,6 +18,7 @@ class DetailsScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: false,
       user: this.props.navigation.state.params.user || {}
     };
     console.log(this.props.navigation.state.params.user)
@@ -53,7 +54,7 @@ class DetailsScreen extends Component {
   }
 
   render() {
-    const { user } = this.state;
+    const { user, loading } = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar
@@ -64,6 +65,9 @@ class DetailsScreen extends Component {
           <View style={styles.profileInfo}>
             <Image
               resizeMode={'cover'}
+              onLoadStart={() => { this.setState({ loading: true }) }}
+              onLoadEnd={() => { this.setState({ loading: false }) }}
+              onError={() => { this.setState({ loading: false }) }}
               defaultSource={require('../../../../assets/images/profile_image_placeholder.png')}
               source={{ uri: user.picture.large }} style={styles.image}
             />

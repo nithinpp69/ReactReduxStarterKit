@@ -42,7 +42,7 @@ export default class TextField extends React.PureComponent {
       inFocus
     } = this.state;
     return (
-      <View style={{  }}>
+      <View style={{}}>
         <View style={[styles.textFieldContainer, {
           width: width ? width : responsiveWidth(90), borderColor: error && !inFocus ? Colors.RED_60 : Colors.GREY_10, borderWidth: (inFocus) ? 1.1 : 0.8,
         }]}>
@@ -60,14 +60,12 @@ export default class TextField extends React.PureComponent {
             maxLength={maxLength}
             onSubmitEditing={onSubmitEditing}
             placeholder={placeholder}
-            on={() => this.setState({ inFocus: true })}
-            onBlur={
-              () =>
-                this.setState({
-                  inFocus: false
-                })
+            onEndEditing={onBlur}
+            onBlur={() =>
+              this.setState({
+                inFocus: false
+              })
             }
-            // onBlur={onBlur}
             numberOfLines={numberOfLines == null ? 1 : numberOfLines}
             onFocus={() => {
               onFocus

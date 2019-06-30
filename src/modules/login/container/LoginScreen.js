@@ -15,10 +15,10 @@ class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'nithin@mail.com',
+      email: '',
       first_name: '',
       last_name: '',
-      password: '123456789',
+      password: '',
       autovalidate: false,
       errors: {},
     };
@@ -90,43 +90,43 @@ class LoginScreen extends Component {
             removeClippedSubviews={false}
             style={{flex:1}}
           > */}
-            <TextField
-              placeholder={'Your email address *'}
-              value={this.state.email}
-              onChangeText={(email) => this.setState({ email })}
-              reference={(input) => {
-                this.email = input;
-              }}
-              keyboardType={'email-address'}
-              onSubmitEditing={() => {
-                this.password.focus()
-              }}
-              onBlur={() => {
-                if (autovalidate) this.isValid()
-              }}
-              maxLength={25}
-              error={this.state.errors['email']}
-            />
-            <TextField
-              placeholder={'Your password *'}
-              onChangeText={(password) => this.setState({ password })}
-              value={this.state.password}
-              reference={(input) => {
-                this.password = input;
-              }}
-              onSubmitEditing={() => {
-              }}
-              onBlur={() => {
-                alert('hello')
-                if (autovalidate) this.isValid()
-              }}
-              secureTextEntry={true}
-              maxLength={25}
-              error={this.state.errors['password']}
-            />
-            <TouchableOpacity onPress={() => { this.handleLogin() }} style={styles.loginButton} activeOpacity={0.8}>
-              <Text style={styles.loginButtonText}>{Strings.LoginScreen.loginButtonText}</Text>
-            </TouchableOpacity>
+          <TextField
+            placeholder={'Your email address *'}
+            value={this.state.email}
+            onChangeText={(email) => this.setState({ email })}
+            reference={(input) => {
+              this.email = input;
+            }}
+            keyboardType={'email-address'}
+            onSubmitEditing={() => {
+              this.password.focus()
+            }}
+            onBlur={() => {
+              if (autovalidate) this.isValid()
+            }}
+            maxLength={25}
+            error={this.state.errors['email']}
+          />
+          <TextField
+            placeholder={'Your password *'}
+            onChangeText={(password) => this.setState({ password })}
+            value={this.state.password}
+            reference={(input) => {
+              this.password = input;
+            }}
+            onSubmitEditing={() => {
+              this.handleLogin()
+            }}
+            onBlur={() => {
+              if (autovalidate) this.isValid()
+            }}
+            secureTextEntry={true}
+            maxLength={25}
+            error={this.state.errors['password']}
+          />
+          <TouchableOpacity onPress={() => { this.handleLogin() }} style={styles.loginButton} activeOpacity={0.8}>
+            <Text style={styles.loginButtonText}>{Strings.LoginScreen.loginButtonText}</Text>
+          </TouchableOpacity>
           {/* </ScrollView> */}
         </View>
       </SafeAreaView>

@@ -3,7 +3,6 @@ const initialState = {
 };
 
 export default function auth(state = initialState, action) {
-  console.log('action ', action)
   switch (action.type) {
     case 'USER_LOGIN':
       console.log('PAYLOAD ', action)
