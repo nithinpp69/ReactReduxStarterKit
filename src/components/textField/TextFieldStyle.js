@@ -4,7 +4,7 @@ import {
 import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../helpers/responsive';
 import { Colors } from '../../helpers/colors';
 const styles = StyleSheet.create({
-  textFieldContainer:{
+  textFieldContainer: {
     backgroundColor: Colors.GREY_20,
     borderRadius: responsiveWidth(2),
     flexDirection: 'row',
@@ -12,12 +12,23 @@ const styles = StyleSheet.create({
     height: responsiveHeight(6),
     marginVertical: responsiveWidth(5),
   },
-  textField:{
+  textField: {
     flex: 1,
     paddingHorizontal: responsiveWidth(2),
     color: Colors.BLACK_80,
     height: responsiveHeight(6),
     fontSize: responsiveFontSize(1.8),
+  },
+  inLineImageLeft: {
+    width: responsiveWidth(1.1),
+    borderTopLeftRadius: responsiveWidth(2),
+    borderBottomLeftRadius: responsiveWidth(2),
+    height: responsiveHeight(6),
+    alignSelf: 'center',
+  },
+  placeholderText: {
+    color: Colors.GREY_50,
+    fontSize: responsiveFontSize(1.5)
   },
   errorInfo: {
     paddingHorizontal: responsiveWidth(2),

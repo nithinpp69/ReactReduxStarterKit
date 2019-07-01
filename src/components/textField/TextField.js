@@ -44,8 +44,15 @@ export default class TextField extends React.PureComponent {
     return (
       <View style={{}}>
         <View style={[styles.textFieldContainer, {
-          width: width ? width : responsiveWidth(90), borderColor: error && !inFocus ? Colors.RED_60 : Colors.GREY_10, borderWidth: (inFocus) ? 1.1 : 0.8,
+          width: width ? width : responsiveWidth(90), borderColor: Colors.GREY_10, borderWidth: (inFocus) ? 1.1 : 0.8,
         }]}>
+          <View style={[styles.inLineImageLeft, { backgroundColor: error ? Colors.RED_60 : Colors.EMERALD, }]} />
+          {/* <View style={{ alignContent: 'center', flex: 1 }}>
+            {
+              inFocus || value != '' && (
+                <Text style={styles.placeholderText}>{placeholder}</Text>
+              )
+            } */}
           <TextInput
             editable={editable == null ? true : editable}
             style={styles.textField}
@@ -59,6 +66,7 @@ export default class TextField extends React.PureComponent {
             autoCapitalize={autoCapitalize == null ? 'none' : autoCapitalize}
             maxLength={maxLength}
             onSubmitEditing={onSubmitEditing}
+            // placeholder={!inFocus ? placeholder : ''}
             placeholder={placeholder}
             onEndEditing={onBlur}
             onBlur={() =>
@@ -70,18 +78,18 @@ export default class TextField extends React.PureComponent {
             onFocus={() => {
               onFocus
               this.setState({ inFocus: true })
-            }}>
-          </TextInput>
+            }} />
+          {/* </View> */}
           {
-            error && !inFocus && (
+            error && (
               <View activeOpacity={0.9} style={styles.errorInfo}>
-                <Ionicons name='ios-information-circle-outline' color={Colors.RED_60} size={responsiveWidth(6)} />
+                <Ionicons name='ios-information-circle' color={Colors.RED_60} size={responsiveWidth(6)} />
               </View>
             )
           }
         </View>
         {
-          error && !inFocus && (
+          error && (
             <View style={styles.errorWindow}>
               <Text style={styles.errorText}>{error}</Text>
             </View>

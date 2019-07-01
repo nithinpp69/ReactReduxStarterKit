@@ -11,6 +11,7 @@ import { Colors } from '../../../helpers/colors';
 import { emailvalidation } from '../../../helpers/validation';
 import { responsiveWidth } from '../../../helpers/responsive';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
 class LoginScreen extends Component {
   constructor(props) {
     super(props);
@@ -104,7 +105,6 @@ class LoginScreen extends Component {
             onBlur={() => {
               if (autovalidate) this.isValid()
             }}
-            maxLength={25}
             error={this.state.errors['email']}
           />
           <TextField
