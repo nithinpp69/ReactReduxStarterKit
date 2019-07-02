@@ -56,7 +56,7 @@ export default class TextField extends React.PureComponent {
           <TextInput
             editable={editable == null ? true : editable}
             style={styles.textField}
-            placeholderTextColor={error && !inFocus ? Colors.RED_60 : Colors.GREY_50}
+            placeholderTextColor={error ? Colors.RED_60 : Colors.GREY_50}
             ref={reference}
             label={labelText}
             value={value}

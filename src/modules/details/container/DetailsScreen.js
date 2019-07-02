@@ -34,6 +34,7 @@ class DetailsScreen extends Component {
       ),
       headerStyle: {
         elevation: 0,
+        borderBottomColor: 0,
         shadowOpacity: 0,
         shadowOffset: {
           height: 0,
