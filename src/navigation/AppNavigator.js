@@ -8,6 +8,7 @@ import HomeScreen from '../modules/home/container/HomeScreen';
 import DetailsScreen from '../modules/details/container/DetailsScreen';
 import { Colors } from '../helpers/colors';
 import { responsiveWidth } from "../helpers/responsive";
+import { createFluidNavigator} from 'react-navigation-fluid-transitions';
 
 const defaultNavigationOptions = {
   headerStyle: {
@@ -19,12 +20,6 @@ const defaultNavigationOptions = {
     shadowRadius: 2,
     backgroundColor: Colors.THEME_COLOR,
   },
-  // headerLeftContainerStyle: {
-  //   paddingLeft: responsiveWidth(5)
-  // },
-  // headerRightContainerStyle: {
-  //   paddingRight: responsiveWidth(5)
-  // },
   headerBackImage: (
     <Ionicons name='ios-arrow-back' size={responsiveWidth(6)} color={Colors.WHITE} style={{ padding: responsiveWidth(2.5) }} />
   ),
@@ -71,7 +66,7 @@ const AuthStack = createStackNavigator({
     transitionConfig: transitionConfig
   });
 
-const Appstack = createStackNavigator({
+const Appstack = createFluidNavigator({
   Home: { screen: HomeScreen },
   DetailsScreen: { screen: DetailsScreen }
 },

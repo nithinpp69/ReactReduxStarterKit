@@ -13,6 +13,7 @@ import { ActionCreators } from "../../../actions/index";
 import styles from '../style/detailsScreenStyle';
 import { Colors } from '../../../helpers/colors';
 import moment from 'moment';
+import { Transition } from 'react-navigation-fluid-transitions';
 
 class DetailsScreen extends Component {
   constructor(props) {
@@ -63,14 +64,16 @@ class DetailsScreen extends Component {
         />
         <View style={styles.contentContainer}>
           <View style={styles.profileInfo}>
-            <Image
-              resizeMode={'cover'}
-              onLoadStart={() => { this.setState({ loading: true }) }}
-              onLoadEnd={() => { this.setState({ loading: false }) }}
-              onError={() => { this.setState({ loading: false }) }}
-              defaultSource={require('../../../../assets/images/profile_image_placeholder.png')}
-              source={{ uri: user.picture.large }} style={styles.image}
-            />
+            <Transition shared={user.email} appear='scale' disappear='bottom'>
+              <Image
+                resizeMode={'cover'}
+                onLoadStart={() => { this.setState({ loading: true }) }}
+                onLoadEnd={() => { this.setState({ loading: false }) }}
+                onError={() => { this.setState({ loading: false }) }}
+                defaultSource={require('../../../../assets/images/profile_image_placeholder.png')}
+                source={{ uri: user.picture.large }} style={styles.image}
+              />
+            </Transition>
             <Text style={styles.name}>{user.name.first.toUpperCase()} {user.name.last.toUpperCase()}</Text>
             <Text style={styles.email}>{user.email}</Text>
           </View>
