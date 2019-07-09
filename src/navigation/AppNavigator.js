@@ -19,12 +19,6 @@ const defaultNavigationOptions = {
     shadowRadius: 2,
     backgroundColor: Colors.THEME_COLOR,
   },
-  // headerLeftContainerStyle: {
-  //   paddingLeft: responsiveWidth(5)
-  // },
-  // headerRightContainerStyle: {
-  //   paddingRight: responsiveWidth(5)
-  // },
   headerBackImage: (
     <Ionicons name='ios-arrow-back' size={responsiveWidth(6)} color={Colors.WHITE} style={{ padding: responsiveWidth(2.5) }} />
   ),
