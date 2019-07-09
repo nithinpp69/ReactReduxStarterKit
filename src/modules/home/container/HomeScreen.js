@@ -1,3 +1,7 @@
+/**
+ * Home screen presentational component
+ */
+
 import React, { Component } from 'react';
 import {
   View,
@@ -29,7 +33,10 @@ class HomeScreen extends Component {
       peopleList: this.props.home.homeResult.results || []
     };
   }
-
+  /**
+   * Navigation header
+   * use header: null to remove the header from the screen
+   */
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'React Redux Starter Kit',
@@ -45,7 +52,10 @@ class HomeScreen extends Component {
   };
 
 
-
+  /**
+   * dispatches the user logout action and navigates the user to
+   * the authentication stack
+   */
   _logoutUser = () => {
     this.props.actions.logoutUser()
     this.props.navigation.navigate('Authentication')
@@ -56,6 +66,10 @@ class HomeScreen extends Component {
     this.getPeople()
   }
 
+  /**
+   * function to fetch the people list from the API
+   * all the pagination functionalities are handled in this function
+   */
   getPeople() {
     let { page } = this.state;
     this.setState({
@@ -78,6 +92,10 @@ class HomeScreen extends Component {
 
   }
 
+
+  /**
+   * Pull to refresh functionality implementation
+   */
   _onRefresh() {
     this.setState({
       refreshing: true
@@ -94,7 +112,7 @@ class HomeScreen extends Component {
     console.log(this.props.auth)
     let { isLoading, peopleList, page } = this.state;
     let { error } = this.props.home;
-    if (isLoading && page == 1 ) {
+    if (isLoading && page == 1) {
       return (
         <SafeAreaView style={styles.container}>
           <StatusBar

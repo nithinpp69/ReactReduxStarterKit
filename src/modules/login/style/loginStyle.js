@@ -1,3 +1,7 @@
+/**
+ * Login style object
+ */
+
 import {
   StyleSheet,
 } from 'react-native';

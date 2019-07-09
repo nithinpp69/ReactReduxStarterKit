@@ -1,3 +1,6 @@
+/**
+ * Details Screen Style Object
+ */
 import {
   StyleSheet,
 } from 'react-native';

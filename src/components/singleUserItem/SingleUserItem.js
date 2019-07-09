@@ -1,3 +1,8 @@
+
+/**
+ * Reusable component used to display a single user item 
+ */
+
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, FlatList, Image } from 'react-native';
 import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../helpers/responsive';

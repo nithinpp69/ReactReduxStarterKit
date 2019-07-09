@@ -1,5 +1,13 @@
+/**
+ * Home Screen API call actions are handled here
+ */
+
 import { getHome } from '../../../services/api';
 
+/**
+ * get people list over the network and dispatches an action
+ * to update the state of the reducer
+ */
 export function getPeopleList(page) {
   return (dispatch, getState) => {
     return getHome(page).then(response => {

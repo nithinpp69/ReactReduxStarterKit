@@ -1,3 +1,8 @@
+
+/**
+ * Single user item style object
+ */
+
 import {
   StyleSheet,
 } from 'react-native';

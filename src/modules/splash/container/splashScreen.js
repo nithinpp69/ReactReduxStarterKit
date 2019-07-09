@@ -1,3 +1,8 @@
+/**
+ * Splash screen Presentational component.
+ * 
+ */
+
 import React, { Component } from 'react';
 import { View, Text, Platform } from 'react-native';
 import { connect } from "react-redux";
@@ -12,7 +17,14 @@ class splashScreenUI extends Component {
       auth: this.props.auth.authResult.email || undefined
     };
   }
+
+
   componentDidMount() {
+    /**
+     * checks if the user is already logged in or not
+     * 
+     * Replace with your logic
+     */
     if (this.props.auth.authResult.email == undefined)
       this.props.navigation.navigate('Authentication');
     else
@@ -24,7 +36,6 @@ class splashScreenUI extends Component {
   }
 
   render() {
-    console.log(this.props.auth.authResult)
     return null;
   }
 }

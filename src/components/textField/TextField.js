@@ -1,12 +1,14 @@
+/**
+ * Custom input component used in the application login screen 
+ */
+
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
 import { responsiveWidth, responsiveFontSize, responsiveHeight } from '../../helpers/responsive';
 import { Colors } from '../../helpers/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import styles from './TextFieldStyle';
-/**
- * Custom input component used in the application. 
- */
+
 export default class TextField extends React.PureComponent {
   constructor() {
     super();

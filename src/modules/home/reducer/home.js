@@ -1,4 +1,6 @@
-
+/**
+ * Home Screen Reducer
+ */
 const initialPostState = {
     homeResult: {},
     error: false

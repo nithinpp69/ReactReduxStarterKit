@@ -1,3 +1,6 @@
+/**
+ * Colors used in the application
+ */
 export const Colors ={
   THEME_COLOR : '#3d3e3e',
   DARK_GREY: '#3d3e3e',

@@ -1,3 +1,7 @@
+/**
+ * Presentational component for the details screen
+ */
+
 import React, { Component } from 'react';
 import {
   Image,
@@ -25,10 +29,12 @@ class DetailsScreen extends Component {
   }
 
 
+  // defines the header element for the screen
+  // if no header is required or to hide the header
+  // use header: null
   static navigationOptions = ({ navigation }) => {
     return {
-      // title: navigation.state.params.user.name.first.toUpperCase(),
-      title: '',
+      title: null,
       headerRight: (
         <View />
       ),
@@ -45,6 +51,7 @@ class DetailsScreen extends Component {
     };
   };
 
+  // Functional Component to render each profile item
   ProfileItem(item, value) {
     return (
       <View style={styles.profileDetailsSingleItem}>
@@ -54,6 +61,8 @@ class DetailsScreen extends Component {
     )
   }
 
+  // Main render component
+  // renders the view 
   render() {
     const { user, loading } = this.state;
     return (

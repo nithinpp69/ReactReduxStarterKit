@@ -1,3 +1,7 @@
+/**
+ * Login reducer component
+ */
+
 const initialState = {
   authResult: {}
 };

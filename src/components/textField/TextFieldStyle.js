@@ -1,3 +1,6 @@
+/**
+ * Custom input component style.
+ */
 import {
   StyleSheet,
 } from 'react-native';

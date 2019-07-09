@@ -1,3 +1,7 @@
+/**
+ * Presentational Component for the login screen
+ */
+
 import React, { Component } from 'react';
 import { SafeAreaView, FlatList, View, Text, StatusBar, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { connect } from "react-redux";
@@ -24,16 +28,17 @@ class LoginScreen extends Component {
       errors: {},
     };
   }
-
+  /**
+   * Navigation header is set to null
+   * => header is disabled / hidden
+   */
   static navigationOptions = {
     header: null,
   }
-  // static navigationOptions = ({ navigation }) => {
-  //   return {
-  //     title: 'Login',
-  //   };
-  // };
 
+  /**
+   * Function to validate the user input
+   */
   isValid = () => {
     var letters = /^([a-zA-Z]+\s)*[a-zA-Z]+$/;
     var numbers = /^\d+$/;
@@ -65,6 +70,10 @@ class LoginScreen extends Component {
     return valid;
   }
 
+  /**
+   * User login action handling
+   * will let the user in with a valid email and password
+   */
   handleLogin() {
     this.setState({
       autovalidate: true
@@ -84,13 +93,6 @@ class LoginScreen extends Component {
           backgroundColor='transparent'
         />
         <View style={styles.contentContainer}>
-          {/* <ScrollView
-            showsVerticalScrollIndicator={false}
-            bounces={true}
-            keyboardShouldPersistTaps='always'
-            removeClippedSubviews={false}
-            style={{flex:1}}
-          > */}
           <TextField
             placeholder={'Your email address *'}
             value={this.state.email}
@@ -127,7 +129,6 @@ class LoginScreen extends Component {
           <TouchableOpacity onPress={() => { this.handleLogin() }} style={styles.loginButton} activeOpacity={0.8}>
             <Text style={styles.loginButtonText}>{Strings.LoginScreen.loginButtonText}</Text>
           </TouchableOpacity>
-          {/* </ScrollView> */}
         </View>
       </SafeAreaView>
     );

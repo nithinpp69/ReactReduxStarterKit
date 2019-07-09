@@ -1,3 +1,9 @@
+/**
+ * Application top level navigator component
+ * Keeps two stacks of screen for authentication and application navigation flow.
+ * Two stack navigators are combined with the help of a switch navigator
+ */
+
 import React, { Component } from 'react';
 import { createAppContainer, createStackNavigator, createSwitchNavigator } from "react-navigation";
 import { Animated, Easing } from 'react-native';

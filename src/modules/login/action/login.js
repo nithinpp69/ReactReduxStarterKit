@@ -1,3 +1,9 @@
+/**
+ * Login Screen Action
+ * Simply stores the email and password to the reducer state 
+ * and the state is preserved with the help of redux-persist
+ */
+
 export function saveUserInfo(email, password) {
   return (dispatch, getState) => {
     return dispatch(saveUserInfoSuccess(email, password))
