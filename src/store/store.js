@@ -1,6 +1,6 @@
 /**
  * Application Redux Store.
- * Offline data persistance is enabled with the help of redux-persist
+ * Offline data persistence is enabled with the help of redux-persist
  */
 import { applyMiddleware, compose, createStore } from "redux";
 import thunkMiddleware from "redux-thunk";
