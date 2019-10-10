@@ -1,4 +1,4 @@
-# ReactReduxStarterKit
+# ReactNativeReduxStarterKit
 
 React-Native Redux boiler-plate with redux-persist enabled
 
